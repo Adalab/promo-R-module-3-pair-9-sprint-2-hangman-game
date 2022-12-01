@@ -4,6 +4,8 @@ import getWordFromApi from '../services/api';
 // styles
 import '../styles/App.scss';
 import '../styles/Form.scss';
+//Router
+import { Router, Route, Link, NavLink } from 'react-router-dom';
 //components
 import Header from './Header';
 import Dummy from './Dummy';
@@ -30,8 +32,6 @@ function App() {
     return errorLetters.length;
   };
 
- 
-
   const handleLastLetter = (value) => {
     value = value.toLocaleLowerCase();
     setLastLetter(value);
@@ -48,8 +48,8 @@ function App() {
       <main className="main">
         <section>
           <SolutionLetters word={word} userLetters={userLetters} />
-          <ErrorLetters userLetters={userLetters} word= {word}/>
-          <Form lastLetter = {lastLetter} handleLastLetter= {handleLastLetter}/>
+          <ErrorLetters userLetters={userLetters} word={word} />
+          <Form lastLetter={lastLetter} handleLastLetter={handleLastLetter} />
         </section>
         <Dummy numberOfErrors={getNumberOfErrors()} />
       </main>
