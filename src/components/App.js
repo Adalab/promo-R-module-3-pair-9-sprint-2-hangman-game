@@ -5,13 +5,14 @@ import getWordFromApi from '../services/api';
 import '../styles/App.scss';
 import '../styles/Form.scss';
 //Router
-import { Router, Route, Link, NavLink } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 //components
 import Header from './Header';
 import Dummy from './Dummy';
-import SolutionLetters from './SolutionLetters';
-import ErrorLetters from './ErrorLetters';
-import Form from './Form';
+import Footer from './Footer';
+import Instructions from './Instructions';
+import Options from './Options';
+import HomePage from './HomePage';
 
 function App() {
   const [word, setWord] = useState('');
@@ -46,13 +47,25 @@ function App() {
     <div className="page">
       <Header />
       <main className="main">
-        <section>
-          <SolutionLetters word={word} userLetters={userLetters} />
-          <ErrorLetters userLetters={userLetters} word={word} />
-          <Form lastLetter={lastLetter} handleLastLetter={handleLastLetter} />
-        </section>
+        <Router>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                word={word}
+                userLetters={userLetters}
+                lastLetter={lastLetter}
+                handleLastLetter={handleLastLetter}
+              />
+            }
+          />
+          <Route path="/instructions" element={<Instructions />} />
+          <Route path="/options" element={<Options />} />
+        </Router>
+
         <Dummy numberOfErrors={getNumberOfErrors()} />
       </main>
+      <Footer />
     </div>
   );
 }
