@@ -5,7 +5,7 @@ import getWordFromApi from '../services/api';
 import '../styles/App.scss';
 import '../styles/Form.scss';
 //Router
-import { Router, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 //components
 import Header from './Header';
 import Dummy from './Dummy';
@@ -47,7 +47,7 @@ function App() {
     <div className="page">
       <Header />
       <main className="main">
-        <Router>
+        <Routes>
           <Route
             path="/"
             element={
@@ -61,7 +61,7 @@ function App() {
           />
           <Route path="/instructions" element={<Instructions />} />
           <Route path="/options" element={<Options />} />
-        </Router>
+        </Routes>
 
         <Dummy numberOfErrors={getNumberOfErrors()} />
       </main>
